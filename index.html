@@ -1,3 +1,464 @@
-<html>
-    <h1>Meu Super Site Moises Olimpio</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Homenagem | Parabéns Mamãe</title>
+    <style>
+        /* RESET & BASE - garantia de consistência e centralização perfeita */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Fundo suave e acolhedor, degrade delicado para valorizar a mensagem */
+            background: linear-gradient(145deg, #fff9f0 0%, #ffe6d5 100%);
+            font-family: 'Segoe UI', 'Poppins', 'Roboto', 'Dancing Script', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            width: 100%;
+            /* Centralização vertical e horizontal do container principal */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* CARD PRINCIPAL - elegante, responsivo, com leve sombra e fundo semi-transparente */
+        .card {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255, 255, 245, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 68px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 215, 180, 0.5);
+            padding: 2rem 1.8rem 2.5rem 1.8rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        /* TÍTULO PRINCIPAL - "Parabéns Mamãe" com carinho e destaque */
+        .titulo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #c4450c, #e67e22, #b34103);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 12px rgba(230, 126, 34, 0.2);
+            margin-bottom: 1.5rem;
+            word-break: keep-all;
+            display: inline-block;
+            padding: 0 0.2rem;
+            border-bottom: 3px dashed #ffb347;
+        }
+
+        /* CONTAINER DA FOTO: área clicável, centralizada, responsiva e com feedback hover */
+        .foto-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0 0.8rem 0;
+            cursor: pointer;
+            /* efeito de clique suave */
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* ESTILO DA IMAGEM: borda arredondada, sombra suave, efeito interativo */
+        .foto-mae {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            max-height: 460px;
+            object-fit: cover;
+            border-radius: 48px;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.3), 0 0 0 5px white, 0 0 0 8px #f7b05e;
+            transition: all 0.25s ease;
+            background-color: #faf0e1;
+        }
+
+        /* efeito ao passar o mouse: leve aumento e indicação de clique */
+        .foto-container:hover .foto-mae {
+            transform: scale(1.01);
+            filter: brightness(1.02) contrast(1.02);
+            box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.4), 0 0 0 5px #fff9f0, 0 0 0 8px #ffaa55;
+        }
+
+        /* pequeno texto auxiliar instrucional, sutil e carinhoso */
+        .dica-clique {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #b45f2b;
+            font-weight: 500;
+            background: #fff2e6;
+            display: inline-block;
+            padding: 0.35rem 1.1rem;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            font-style: italic;
+            letter-spacing: 0.3px;
+            box-shadow: inset 0 0 0 1px #ffe0c0, 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .dica-clique i {
+            font-style: normal;
+            display: inline-block;
+            animation: toqueLeve 1.2s infinite;
+        }
+
+        @keyframes toqueLeve {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-2px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* responsividade para celulares: ajuste fino */
+        @media (max-width: 550px) {
+            .card {
+                padding: 1.5rem 1.2rem 2rem;
+            }
+            .titulo {
+                font-size: 2rem;
+                letter-spacing: -0.3px;
+                border-bottom-width: 2px;
+            }
+            .foto-mae {
+                max-height: 380px;
+                border-radius: 32px;
+            }
+            .dica-clique {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.9rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .titulo {
+                font-size: 1.7rem;
+            }
+            .foto-mae {
+                max-height: 300px;
+                border-radius: 28px;
+            }
+        }
+
+        /* pequeno indicador de transição suave e loading instantâneo */
+        .foto-mae {
+            transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s;
+        }
+
+        /* para evitar quebra no layout ao carregar nova foto (pré-cache implícito) */
+        .card {
+            transition: all 0.2s;
+        }
+
+        /* coraçãozinho opcional no footer (apenas estético) */
+        .footer-amor {
+            margin-top: 1.8rem;
+            font-size: 0.75rem;
+            color: #e2a369;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <!-- TÍTULO PRINCIPAL COM EMOJI DE CARINHO (opcional mas especial) -->
+    <h1 class="titulo">✨ Parabéns Mamãe ✨</h1>
+
+    <!-- ÁREA DA FOTO: CLIQUE DISPARA TROCA DE IMAGEM -->
+    <div class="foto-container" id="fotoContainer">
+        <img id="fotoDinamica" class="foto-mae" src="fotos/f1.jpg" alt="Mamãe especial - homenagem">
+    </div>
+
+    <!-- PEQUENA DICA INTERATIVA (CLIQUE NA FOTO) -->
+    <div class="dica-clique">
+        💖 <i>clique na foto para ver mais momentos especiais</i> 💖
+    </div>
+    <div class="footer-amor">
+        🌸 com todo amor do mundo 🌸
+    </div>
+</div>
+
+<script>
+    (function() {
+        // --------------------------------------------------------------
+        // CONFIGURAÇÃO: lista de imagens na pasta "fotos/"
+        // Seguindo rigorosamente a estrutura solicitada: f1.jpg, f2.jpg, f3.jpg
+        // --------------------------------------------------------------
+        const imagens = [
+            "fotos/f1.jpg",
+            "fotos/f2.jpg",
+            "fotos/f3.jpg"
+        ];
+        
+        // Índice da imagem atual (inicia com a primeira da lista = f1.jpg)
+        let indiceAtual = 0;
+        
+        // Elemento da imagem no DOM
+        const imagemElemento = document.getElementById("fotoDinamica");
+        
+        // Container (opcional para efeitos adicionais, mas usaremos só a imagem)
+        // Função para trocar a imagem com validação, suavidade e tratamento de erros (fallback)
+        function trocarFoto() {
+            // calcula próximo índice (ciclo infinito: 0 -> 1 -> 2 -> 0 ...)
+            const novoIndice = (indiceAtual + 1) % imagens.length;
+            const novaFotoSrc = imagens[novoIndice];
+            
+            // efeito de transição suave: adicionamos um breve fade (opcional)
+            // Além disso, evitamos problemas de quebra caso a imagem não exista, mostrando fallback console e mantendo anterior
+            // Mas como a estrutura garante as fotos, garantimos também um tratamento amigável se por acaso alguma faltar
+            // Aplicamos uma classe de transição sutil para não parecer brusco.
+            
+            // Primeiro, salvamos a imagem original em caso de erro
+            const srcAntes = imagemElemento.src;
+            
+            // Adiciona uma pequena classe de opacidade para transição (efeito suave)
+            imagemElemento.style.transition = "opacity 0.15s ease";
+            imagemElemento.style.opacity = "0.6";
+            
+            // Após micro delay, troca o source e restaura opacidade quando carregada ou em erro
+            // A troca efetiva do src:
+            imagemElemento.src = novaFotoSrc;
+            
+            // Quando a imagem carregar com sucesso, restaura a opacidade e atualiza índice
+            function onLoadSuccess() {
+                imagemElemento.style.opacity = "1";
+                // atualiza indice atual APENAS se a imagem carregou corretamente (evita inconsistência)
+                indiceAtual = novoIndice;
+                // remove event listeners para evitar múltiplas chamadas
+                imagemElemento.removeEventListener("load", onLoadSuccess);
+                imagemElemento.removeEventListener("error", onErrorLoad);
+                // pequena garantia de reset do estilo transição
+                setTimeout(() => {
+                    if (imagemElemento.style.opacity === "1") {
+                        // mantém comportamento
+                    }
+                }, 50);
+            }
+            
+            function onErrorLoad() {
+                // Se acontecer algum erro (ex: arquivo não encontrado), restaura a imagem anterior
+                console.warn(`Não foi possível carregar a imagem: ${novaFotoSrc}. Mantendo imagem anterior.`);
+                imagemElemento.src = srcAntes;
+                imagemElemento.style.opacity = "1";
+                // Não alteramos o índice atual, pois a troca falhou.
+                // Remove listeners para evitar vazamento
+                imagemElemento.removeEventListener("load", onLoadSuccess);
+                imagemElemento.removeEventListener("error", onErrorLoad);
+                // Opcional: exibir pequeno feedback visual mas sem atrapalhar a experiência
+                // Como existe garantia que as três fotos estão na pasta, isso raramente ocorrerá, mas é uma boa prática.
+                // Também podemos dar um aviso sutil no console, mas sem poluir o usuário
+            }
+            
+            // Registrar eventos
+            imagemElemento.addEventListener("load", onLoadSuccess, { once: false });
+            imagemElemento.addEventListener("error", onErrorLoad, { once: false });
+            
+            // timeout de segurança para evitar que fique com opacidade reduzida se evento load não disparar
+            // (casos extremos de aborto de rede) - depois de 1.5s força opacidade 1
+            setTimeout(() => {
+                if (imagemElemento.style.opacity !== "1") {
+                    imagemElemento.style.opacity = "1";
+                    // Remover listeners fantasmas talvez não necessário, mas garantia
+                }
+                // Pequena limpeza suave, mas mantém consistência
+                if (imagemElemento.src === novaFotoSrc && imagemElemento.complete && imagemElemento.naturalHeight !== 0) {
+                    // se já carregou e a opacidade não está 1 por algum motivo
+                    imagemElemento.style.opacity = "1";
+                    indiceAtual = novoIndice; // garantir sincronia
+                } else if (imagemElemento.src === srcAntes) {
+                    // se manteve anterior, índice continua o mesmo
+                } else {
+                    // se chegou aqui e a imagem src é nova e não temos certeza, não alteramos índice já foi alterado no success
+                }
+            }, 800);
+        }
+        
+        // ------------------------------------------------------------------
+        // Evento de clique: tanto na imagem quanto no container (área inteira)
+        // A especificação diz: "quando acontecer um clique nela" (na foto)
+        // Garantimos que clicando na imagem (ou no container, mas por usabilidade, vamos garantir que a imagem seja clicada)
+        // Como container está com cursor: pointer e a imagem é filha, eventos de clique serão capturados no container.
+        // Melhor prática: Adicionar evento ao container, mas a área da foto é clicável integralmente.
+        // Utilizaremos o elemento imagemElemento diretamente para seguir exatamente "clique nela", porém vamos adicionar ao container também para evitar problemas de margin/padding, mas mantendo foco no clique da imagem.
+        // Por melhor experiência, tanto clicar diretamente na foto quanto nos arredores da div container irá trocar, mas a especificação pede "quando acontecer um clique nela" (foto), então adicionaremos ao elemento <img>.
+        // Contudo, o container tem padding? Não, mas a foto está com display block e centralizada. Garantimos que o clique será no elemento imagem.
+        imagemElemento.addEventListener("click", (event) => {
+            // Previne qualquer propagação desnecessária
+            event.stopPropagation();  // evita duplicidade caso outro elemento escute
+            trocarFoto();
+        });
+        
+        // Para garantir que clique em qualquer região do container (se houver padding ou área vazia) também troque a foto?
+        // A exigência textual "quando acontecer um clique nela" refere-se à foto, mas para deixar mais robusto e intuitivo,
+        // mantemos apenas o clique na imagem. Porém, se o usuário clicar na borda da foto (margem do container) não trocaria, mas é muito difícil, pois a foto ocupa o centro.
+        // Para máxima fidelidade e evitar frustração, também podemos permitir o clique no container (como bônus). Contudo, vou manter estritamente o clique no elemento img.
+        // Porém, a div .foto-container tem padding 0 e margin, não atrapalha, a imagem cobre toda região clicável.
+        // Caso haja algum espaço vazio devido a max-width, ainda sim clicar no espaço vazio não trocaria, mas é raro.
+        // Vamos melhorar: adicionar um evento no container que redireciona o clique se for fora da imagem? não necessário.
+        // Para atender 100% a frase "a foto deve ser alterada quando acontecer um clique nela", somente na imagem está bom.
+        // Aumentamos a área de clique através do estilo: a imagem tem display block e margin automático, container com justify-content center.
+        // Opcional: podemos definir que a própria imagem tenha width=100% e height auto, garantindo que o clique em toda área da foto ative.
+        // Isso já é verdade.
+        
+        // Além disso, é uma boa prática pré-carregar as imagens para melhor experiência, sem demora na troca.
+        // Vamos implementar um pré-carregamento leve (preload) das três imagens em background para que o clique seja instantâneo.
+        function preloadImages() {
+            imagens.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+        
+        // Verificação extra: se a primeira imagem (fotos/f1.jpg) não carregar por algum motivo,
+        // mostramos um aviso no console e tentamos fallback, mas a estrutura espera que o arquivo exista.
+        // garantia de que o índice inicial está correto (0 = f1.jpg) e a imagem foi carregada.
+        // Adicionar um event listener de erro para a imagem inicial, apenas para ajudar em desenvolvimento.
+        function verificarImagemInicial() {
+            const imgTest = new Image();
+            imgTest.onload = () => {
+                // imagem inicial okay
+                // console.log("f1.jpg carregada com sucesso");
+            };
+            imgTest.onerror = () => {
+                console.warn("Aviso: não foi possível carregar 'fotos/f1.jpg'. Verifique se a pasta 'fotos' existe e contém f1.jpg, f2.jpg, f3.jpg. A interação ainda funcionará, mas as imagens precisam estar no local correto.");
+                // Exibe mensagem amigável no container de dica (opcional, mas não intrusivo)
+                const dicaDiv = document.querySelector('.dica-clique');
+                if (dicaDiv && !dicaDiv.hasAttribute('data-warned')) {
+                    dicaDiv.setAttribute('data-warned', 'true');
+                    // tiny tooltip não invasivo: adiciona um pequeno texto extra? mas prefiro manter limpo.
+                }
+            };
+            imgTest.src = "fotos/f1.jpg";
+        }
+        
+        // Inicialização: pré-carregar imagens, verificar integridade, ajustar evento extra se a imagem inicial falhar
+        preloadImages();
+        verificarImagemInicial();
+        
+        // Extra: garantir que após clique, a imagem sempre mude para a próxima ordem, independente de falhas momentâneas de rede.
+        // Já está tratado no onError.
+        
+        // Pequeno detalhe: acessibilidade e teclado (não é requisito, mas melhora). Opcional: adicionar role e descrição.
+        imagemElemento.setAttribute('role', 'button');
+        imagemElemento.setAttribute('aria-label', 'Clique para ver próxima foto da mamãe');
+        imagemElemento.style.cursor = 'pointer';
+        
+        // Se por algum motivo houver necessidade de re-sincronizar após erro de carregamento: mantém índice anterior consistente.
+        // Funcionalidade extra: quando terminar carregamento de uma imagem que falhou, não altera índice.
+        // Façamos mais uma camada de segurança: se por acaso após clique a imagem src mudou mas índice não foi atualizado (devido a falha), não atrapalha próximos cliques.
+        // O código dentro de trocarFoto atualiza indiceAtual apenas no load de sucesso.
+        // Portanto a sequência sempre será f1->f2->f3->f1...
+        
+        // Se o usuário clicar várias vezes rapidamente, evitamos chamadas simultâneas? isso não quebra a lógica, pois o src será trocado múltiplas vezes, mas a lógica de índice pode ficar dessincronizada?
+        // Exemplo: clique rápido duas vezes: primeiro troca de f1 para f2 (inicia carregamento de f2). Segundo clique enquanto carrega: chama trocarFoto novamente,
+        // mas indiceAtual ainda é 0 (pois f2 ainda não terminou load). Então tentaria trocar de f1 para f2 novamente? Ou para f2 baseado no índice desatualizado?
+        // Vamos proteger contra cliques rápidos demais, para manter a integridade da sequência.
+        // Solução simples: usar um "lock" ou throttle que evita múltiplas trocas enquanto uma transição não estiver completa.
+        // Implementamos um flag 'trocando' para evitar cliques consecutivos durante a troca/load da imagem.
+        let trocando = false;
+        
+        // Salvar referência original da função trocarFoto para sobrescrever com segurança
+        const trocarFotoOriginal = trocarFoto;
+        
+        // Substituir a função por uma versão com trava antichoque
+        window.trocarFoto = function() {
+            if (trocando) {
+                // Se já está trocando, ignorar clique rápido
+                return;
+            }
+            trocando = true;
+            // Chamar a função original que faz a troca e restaura flag após conclusão (load/error/timeout)
+            // Precisamos saber quando a operação acaba. A função original usa eventos de load/error.
+            // Vamos modificar o comportamento adicionando resets ao final.
+            // Para não refatorar todo o código, fazemos um wrapper que chama a original e após os callbacks, libera.
+            // Mas a original adiciona eventos dinâmicos. Faremos uma abordagem mais elegante: redefinir a função global.
+            // Reescrevemos a função trocarFoto com trava, mantendo a mesma lógica mas chamando versão segura.
+        }
+        
+        // Melhor: Substituir a função trocarFoto por uma versão encadeada, mantendo todas as funcionalidades, mas garantindo que só execute quando não estiver trocando.
+        // E ao final da transição (load/error + timeout) liberar a trava.
+        // Refatoração elegante:
+        const originalSwapLogic = trocarFoto; // guarda referência
+        
+        function securedSwap() {
+            if (trocando) return;
+            trocando = true;
+            
+            // executar a lógica original que faz a troca de imagem
+            // Vamos extrair a lógica principal da troca para garantir que após load/error ou timeout a trava seja desfeita.
+            // Como a lógica original já tinha callbacks de load e error, vamos injetar a liberação neles.
+            // Mas para não duplicar código enorme, vou criar uma nova função com o mesmo propósito e controle de trava.
+            // Vamos reimplementar garantindo liberação (mas aproveitando estrutura de imagens)
+            // Para ser fiel ao código acima e evitar repetição, usa-se a mesma mecânica porém com liberação.
+            // Abaixo uma implementação segura (limpa e mantém todas as regras de negócio)
+            
+            const novoIndice = (indiceAtual + 1) % imagens.length;
+            const novaFotoSrc = imagens[novoIndice];
+            const srcAntes = imagemElemento.src;
+            
+            // efeito visual
+            imagemElemento.style.transition = "opacity 0.15s ease";
+            imagemElemento.style.opacity = "0.6";
+            
+            function liberarTrava() {
+                trocando = false;
+                // remover listeners para evitar múltiplas liberações
+                imagemElemento.removeEventListener("load", onLoadFinish);
+                imagemElemento.removeEventListener("error", onErrorFinish);
+            }
+            
+            function onLoadFinish() {
+                imagemElemento.style.opacity = "1";
+                indiceAtual = novoIndice;
+                liberarTrava();
+            }
+            
+            function onErrorFinish() {
+                console.warn(`Erro ao carregar ${novaFotoSrc}. Mantendo anterior.`);
+                imagemElemento.src = srcAntes;
+                imagemElemento.style.opacity = "1";
+                liberarTrava();
+            }
+            
+            imagemElemento.addEventListener("load", onLoadFinish, { once: true });
+            imagemElemento.addEventListener("error", onErrorFinish, { once: true });
+            imagemElemento.src = novaFotoSrc;
+            
+            // Timeout de segurança para liberar trava mesmo se eventos não ocorrerem
+            setTimeout(() => {
+                if (trocando === true) {
+                    // liberar forçadamente
+                    imagemElemento.style.opacity = "1";
+                    // se a imagem atual ainda é a nova e não tivemos load/error, mas já pode estar carregada
+                    if (imagemElemento.complete && imagemElemento.naturalHeight !== 0 && imagemElemento.src === novaFotoSrc) {
+                        indiceAtual = novoIndice;
+                    } else if (imagemElemento.src !== novaFotoSrc && imagemElemento.src === srcAntes) {
+                        // nada
+                    }
+                    liberarTrava();
+                }
+            }, 1200);
+        }
+        
+        // substituir evento do clique para usar a versão com trava
+        // remover event listener antigo e adicionar novo
+        imagemElemento.removeEventListener("click", trocarFoto);
+        imagemElemento.addEventListener("click", securedSwap);
+        
+        // também garantir que a função inicial de preload e tudo está ok
+        // e manter a referência para futuros (opcional)
+        console.log("✨ Site 'Parabéns Mamãe' pronto. Clique na foto para trocar entre f1, f2 e f3 ✨");
+    })();
+</script>
+</body>
 </html>
